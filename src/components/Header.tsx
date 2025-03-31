@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FollowerPointerCard } from "@/components/ui/following-pointer";
 import { CustomButton } from "@/components/ui/custom-button";
 import { cn } from "@/lib/utils"
-import styles from "@/styles/header-5c24b325-f738-4821-8364-8e00db729481.module.css"
+import styles from "@/styles/__header-5c24b325-f738-4821-8364-8e00db729481.module.css"
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false)

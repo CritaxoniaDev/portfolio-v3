@@ -2,8 +2,8 @@
 
 import { motion } from "motion/react";
 import { RefObject, useEffect, useId, useState } from "react";
-
 import { cn } from "@/lib/utils";
+import styles from "@/styles/__animated-beam-2c1b0a9d-e7f6-4a5d-9c3b-8e00db729481.module.css";
 
 export interface AnimatedBeamProps {
   className?: string;
@@ -31,7 +31,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
   fromRef,
   toRef,
   curvature = 0,
-  reverse = false, // Include the reverse prop
+  reverse = false,
   duration = Math.random() * 3 + 4,
   delay = 0,
   pathColor = "gray",
@@ -128,10 +128,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
       width={svgDimensions.width}
       height={svgDimensions.height}
       xmlns="http://www.w3.org/2000/svg"
-      className={cn(
-        "pointer-events-none absolute left-0 top-0 transform-gpu stroke-2",
-        className,
-      )}
+      className={cn(styles.svg_container, className)}
       viewBox={`0 0 ${svgDimensions.width} ${svgDimensions.height}`}
     >
       <path
@@ -140,6 +137,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
         strokeWidth={pathWidth}
         strokeOpacity={pathOpacity}
         strokeLinecap="round"
+        className={styles.path_base}
       />
       <path
         d={pathD}
@@ -147,10 +145,11 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
         stroke={`url(#${id})`}
         strokeOpacity="1"
         strokeLinecap="round"
+        className={styles.path_animated}
       />
       <defs>
         <motion.linearGradient
-          className="transform-gpu"
+          className={styles.gradient}
           id={id}
           gradientUnits={"userSpaceOnUse"}
           initial={{
@@ -173,13 +172,14 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
             repeatDelay: 0,
           }}
         >
-          <stop stopColor={gradientStartColor} stopOpacity="0"></stop>
-          <stop stopColor={gradientStartColor}></stop>
-          <stop offset="32.5%" stopColor={gradientStopColor}></stop>
+          <stop stopColor={gradientStartColor} stopOpacity="0" className={styles.gradient_stop_1}></stop>
+          <stop stopColor={gradientStartColor} className={styles.gradient_stop_2}></stop>
+          <stop offset="32.5%" stopColor={gradientStopColor} className={styles.gradient_stop_3}></stop>
           <stop
             offset="100%"
             stopColor={gradientStopColor}
             stopOpacity="0"
+            className={styles.gradient_stop_4}
           ></stop>
         </motion.linearGradient>
       </defs>

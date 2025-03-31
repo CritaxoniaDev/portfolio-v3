@@ -6,6 +6,8 @@ import Image from "next/image"
 import { FaLaravel, FaPhp } from "react-icons/fa"
 import { SiMysql, SiOpenai } from "react-icons/si"
 import { Briefcase } from "lucide-react"
+import { AuroraText } from "@/components/magicui/aurora-text"
+import styles from "@/styles/__experience-9d8f7e6c-b5a4-4c3e-a2b1-8e00db729481.module.css"
 
 const Experience = () => {
   const experienceData = [
@@ -30,58 +32,61 @@ const Experience = () => {
   ]
 
   return (
-    <section id="experience" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-center">Work Experience</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+    <section id="experience" className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>Work Experience</h2>
+          <AuroraText
+            speed={1.2}
+            className={styles.subtitle_aurora}
+          >
             My professional journey and the skills I've developed along the way
-          </p>
+          </AuroraText>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-8">
+        <div className={styles.timeline_container}>
           {experienceData.map((item, index) => (
-            <div key={index} className="relative">
-              <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+            <div key={index} className={styles.timeline_item}>
+              <div className={styles.timeline_line}></div>
               
-              <div className="ml-8 relative">
+              <div className={styles.card_container}>
                 {/* Timeline dot */}
-                <div className="absolute -left-10 top-6 w-4 h-4 rounded-full bg-indigo-500 z-10 border-4 border-white"></div>
+                <div className={styles.timeline_dot}></div>
                 
                 <CustomCard
                   title={item.title}
                   description={item.company}
-                  className="w-full transform transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,0,0,0.1)] hover:border-indigo-500/50"
+                  className={styles.experience_card}
                 >
-                  <div className="flex justify-between items-center mb-4">
-                    <span className="text-sm text-gray-500 font-medium">{item.period}</span>
+                  <div className={styles.card_header}>
+                    <span className={styles.period}>{item.period}</span>
                     
                     {/* Company Logo */}
-                    <div className="relative h-10 w-24 overflow-hidden">
+                    <div className={styles.logo_container}>
                       <Image 
                         src={item.logo}
                         alt={`${item.company} logo`}
                         fill
-                        className="object-contain"
+                        className={styles.logo_image}
                       />
                     </div>
                   </div>
                   
-                  <ul className="space-y-2 mb-4">
+                  <ul className={styles.description_list}>
                     {item.description.map((desc, i) => (
-                      <li key={i} className="text-gray-600 flex items-start">
-                        <span className="mr-2 text-indigo-500 mt-1">•</span>
+                      <li key={i} className={styles.description_item}>
+                        <span className={styles.bullet}>•</span>
                         <span>{desc}</span>
                       </li>
                     ))}
                   </ul>
                   
-                  <div className="border-t border-gray-100 pt-4">
-                    <p className="text-sm font-medium mb-2 text-gray-700">Skills & Technologies</p>
-                    <div className="flex flex-wrap gap-2">
+                  <div className={styles.skills_section}>
+                    <p className={styles.skills_title}>Skills & Technologies</p>
+                    <div className={styles.skills_container}>
                       {item.skills.map((skill, i) => (
-                        <div key={i} className="flex items-center gap-1 bg-gray-100 px-3 py-1 rounded-full text-sm">
-                          <skill.icon className="h-4 w-4 text-indigo-500" />
+                        <div key={i} className={styles.skill_badge}>
+                          <skill.icon className={styles.skill_icon} />
                           <span>{skill.name}</span>
                         </div>
                       ))}

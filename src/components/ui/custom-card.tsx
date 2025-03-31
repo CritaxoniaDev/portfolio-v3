@@ -2,7 +2,7 @@
 
 import React from "react"
 import { cn } from "@/lib/utils"
-import styles from "@/styles/custom-card-7a9e2b14-c5d3-4f8e-9b67-8e00db729481.module.css"
+import styles from "@/styles/__custom-card-7a9e2b14-c5d3-4f8e-9b67-8e00db729481.module.css"
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string

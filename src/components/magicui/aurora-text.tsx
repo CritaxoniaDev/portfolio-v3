@@ -2,7 +2,7 @@
 
 import type { CSSProperties } from "react";
 import React, { useEffect, useId, useRef } from "react";
-import styles from "@/styles/aurora-text-2b1c9a87-d6e5-4f3a-b9c7-8e00db729481.module.css";
+import styles from "@/styles/__aurora-text-2b1c9a87-d6e5-4f3a-b9c7-8e00db729481.module.css";
 
 interface AuroraTextProps {
   children: React.ReactNode;

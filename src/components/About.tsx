@@ -5,6 +5,7 @@ import { CustomCard } from "@/components/ui/custom-card"
 import { Code, User, Lightbulb } from "lucide-react"
 import { AuroraText } from "@/components/magicui/aurora-text"
 import { AnimatedBeam } from "@/components/magicui/animated-beam"
+import styles from "@/styles/__about-7e6d5c4b-a9b8-4c7d-b6e5-8e00db729481.module.css"
 
 const About = () => {
   const [timeAlive, setTimeAlive] = useState("")
@@ -36,23 +37,26 @@ const About = () => {
     {
       title: "Who I Am",
       content: `My name is Gian Raphael Alcantara, I am ${timeAlive} old, a dedicated software engineering student at First City Providential College. My mission revolves around mastering programming languages, algorithms, and software development methodologies.`,
-      icon: <User className="w-6 h-6 text-blue-500" />,
+      icon: <User className={styles.icon_blue} />,
       color: "blue",
-      ref: card1Ref
+      ref: card1Ref,
+      colorClass: styles.blue_accent
     },
     {
       title: "My Passion",
       content: "Fueled by a relentless passion for technology and innovation, I aspire to become a proficient software engineer capable of tackling complex problems and contributing to groundbreaking projects.",
-      icon: <Code className="w-6 h-6 text-green-500" />,
+      icon: <Code className={styles.icon_green} />,
       color: "green",
-      ref: card2Ref
+      ref: card2Ref,
+      colorClass: styles.green_accent
     },
     {
       title: "My Vision",
       content: "My vision extends beyond mere academic excellence; I aim to leverage my skills to create impactful solutions that address real-world challenges, whether it's enhancing user experiences, optimizing system performance, or revolutionizing industries through cutting-edge software solutions.",
-      icon: <Lightbulb className="w-6 h-6 text-purple-500" />,
+      icon: <Lightbulb className={styles.icon_purple} />,
       color: "purple",
-      ref: card3Ref
+      ref: card3Ref,
+      colorClass: styles.purple_accent
     }
   ]
 
@@ -93,33 +97,44 @@ const About = () => {
   ]
 
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">About Me</h2>
-          <AuroraText className="text-gray-600 max-w-2xl mx-auto">
+    <section id="about" className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>About Me</h2>
+          <AuroraText 
+            className={styles.subtitle}
+            colors={[
+              "#4B5563", // Gray
+              "#6B7280", // Light gray
+              "#3B82F6", // Blue
+              "#10B981", // Green
+              "#8B5CF6", // Purple
+              "#6366F1"  // Indigo
+            ]}
+            speed={0.8}
+          >
             Passionate software engineering student with a vision for innovation
           </AuroraText>
         </div>
 
-        <div className="max-w-6xl mx-auto relative" ref={containerRef}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className={styles.cards_container} ref={containerRef}>
+          <div className={styles.cards_grid}>
             {aboutSections.map((section, index) => (
               <div
                 key={index}
                 ref={section.ref}
-                className="h-full flex"
+                className={styles.card_wrapper}
               >
                 <CustomCard
                   title={section.title}
-                  className={`w-full h-full flex flex-col transform transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,0,0,0.1)] hover:border-${section.color}-500/50`}
+                  className={`${styles.about_card} ${section.colorClass}`}
                 >
-                  <div className="flex items-start gap-4 flex-grow">
-                    <div className={`p-2 bg-${section.color}-500/10 rounded-lg mt-1 flex-shrink-0`}>
+                  <div className={styles.card_content}>
+                    <div className={styles.icon_container} data-color={section.color}>
                       {section.icon}
                     </div>
-                    <div className="flex-grow">
-                      <p className={`text-gray-600 border-l-2 border-${section.color}-500/20 pl-4`}>
+                    <div className={styles.text_container}>
+                      <p className={`${styles.card_text} ${section.colorClass}`}>
                         {section.content}
                       </p>
                     </div>

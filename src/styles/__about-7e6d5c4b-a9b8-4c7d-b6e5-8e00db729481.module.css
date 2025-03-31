@@ -1,0 +1,240 @@
+.section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    background-color: white;
+  }
+  
+  .container {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  
+  .subtitle {
+    color: #4B5563;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+  
+  .cards_container {
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  
+  .cards_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .card_wrapper {
+    height: 100%;
+    display: flex;
+  }
+  
+  .about_card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transform: translateZ(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card_content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-grow: 1;
+  }
+  
+  .icon_container {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .icon_container[data-color="blue"] {
+    background-color: rgba(59, 130, 246, 0.1);
+  }
+  
+  .icon_container[data-color="green"] {
+    background-color: rgba(16, 185, 129, 0.1);
+  }
+  
+  .icon_container[data-color="purple"] {
+    background-color: rgba(139, 92, 246, 0.1);
+  }
+  
+  .icon_blue {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #3B82F6;
+  }
+  
+  .icon_green {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #10B981;
+  }
+  
+  .icon_purple {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #8B5CF6;
+  }
+  
+  .text_container {
+    flex-grow: 1;
+  }
+  
+  .card_text {
+    color: #4B5563;
+    padding-left: 1rem;
+    border-left-width: 2px;
+    border-left-style: solid;
+    line-height: 1.6;
+  }
+  
+  /* Color accent classes */
+  .blue_accent {
+    border-left-color: rgba(59, 130, 246, 0.2);
+  }
+  
+  .blue_accent:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+  
+  .green_accent {
+    border-left-color: rgba(16, 185, 129, 0.2);
+  }
+  
+  .green_accent:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    border-color: rgba(16, 185, 129, 0.5);
+  }
+  
+  .purple_accent {
+    border-left-color: rgba(139, 92, 246, 0.2);
+  }
+  
+  .purple_accent:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    border-color: rgba(139, 92, 246, 0.5);
+  }
+  
+  /* Card hover effects */
+  .about_card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .about_card:hover .icon_container[data-color="blue"] {
+    background-color: rgba(59, 130, 246, 0.15);
+  }
+  
+  .about_card:hover .icon_container[data-color="green"] {
+    background-color: rgba(16, 185, 129, 0.15);
+  }
+  
+  .about_card:hover .icon_container[data-color="purple"] {
+    background-color: rgba(139, 92, 246, 0.15);
+  }
+  
+  /* Media queries for responsive design */
+  @media (min-width: 768px) {
+    .cards_grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .section {
+      background-color: #1F2937;
+    }
+    
+    .title {
+      color: white;
+    }
+    
+    .subtitle {
+      color: #D1D5DB;
+    }
+    
+    .card_text {
+      color: #D1D5DB;
+    }
+    
+    .icon_container[data-color="blue"] {
+      background-color: rgba(59, 130, 246, 0.15);
+    }
+    
+    .icon_container[data-color="green"] {
+      background-color: rgba(16, 185, 129, 0.15);
+    }
+    
+    .icon_container[data-color="purple"] {
+      background-color: rgba(139, 92, 246, 0.15);
+    }
+    
+    .about_card:hover .icon_container[data-color="blue"] {
+      background-color: rgba(59, 130, 246, 0.25);
+    }
+    
+    .about_card:hover .icon_container[data-color="green"] {
+      background-color: rgba(16, 185, 129, 0.25);
+    }
+    
+    .about_card:hover .icon_container[data-color="purple"] {
+      background-color: rgba(139, 92, 246, 0.25);
+    }
+    
+    .blue_accent {
+      border-left-color: rgba(59, 130, 246, 0.3);
+    }
+    
+    .green_accent {
+      border-left-color: rgba(16, 185, 129, 0.3);
+    }
+    
+    .purple_accent {
+      border-left-color: rgba(139, 92, 246, 0.3);
+    }
+    
+    .blue_accent:hover {
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(59, 130, 246, 0.6);
+    }
+    
+    .green_accent:hover {
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(16, 185, 129, 0.6);
+    }
+    
+    .purple_accent:hover {
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(139, 92, 246, 0.6);
+    }
+  }
+  

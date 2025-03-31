@@ -1,0 +1,65 @@
+.svg_container {
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateZ(0);
+    will-change: transform;
+    stroke-width: 2;
+  }
+  
+  .path_base {
+    transition: all 0.3s ease;
+  }
+  
+  .path_animated {
+    transition: all 0.3s ease;
+  }
+  
+  .gradient {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  .gradient_stop_1 {
+    transition: stop-color 0.3s ease;
+  }
+  
+  .gradient_stop_2 {
+    transition: stop-color 0.3s ease;
+  }
+  
+  .gradient_stop_3 {
+    transition: stop-color 0.3s ease;
+  }
+  
+  .gradient_stop_4 {
+    transition: stop-color 0.3s ease;
+  }
+  
+  /* Add hover effects for the container */
+  :global(.about__7e6d5c4b-a9b8-4c7d-b6e5-8e00db729481_cards_container:hover) .path_base {
+    stroke-opacity: 0.3;
+  }
+  
+  /* Enhance the animation on container hover */
+  :global(.about__7e6d5c4b-a9b8-4c7d-b6e5-8e00db729481_cards_container:hover) .gradient {
+    animation: pulse 2s infinite alternate;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  /* Dark mode support */
+  @media (prefers-color-scheme: dark) {
+    .path_base {
+      stroke-opacity: 0.3;
+    }
+  }
+  

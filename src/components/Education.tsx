@@ -5,6 +5,7 @@ import { CustomCard } from "@/components/ui/custom-card"
 import { AuroraText } from "@/components/magicui/aurora-text"
 import { GraduationCap, BookOpen, School } from "lucide-react"
 import Image from "next/image"
+import styles from "@/styles/__education-3f2e1d0c-a9b8-4c7d-b6e5-8e00db729481.module.css"
 
 const Education = () => {
   const educationData = [
@@ -13,82 +14,99 @@ const Education = () => {
       title: "Applied Degree in Software Engineering",
       institution: "Lithan Educlaas",
       description: "Pursuing advanced software engineering concepts and practical applications",
-      icon: <GraduationCap className="w-6 h-6 text-blue-500" />,
+      icon: <GraduationCap className={styles.icon_blue} />,
       color: "blue",
-      logo: "/images/lithan.png" // Add your logo path here
+      logo: "/images/lithan.png",
+      colorClass: styles.blue_accent,
+      dotClass: styles.dot_blue
     },
     {
       period: "2023 - Present",
       title: "Bachelor of Science in Information Technology",
       institution: "First City Providential College",
       description: "Focusing on software development and engineering principles",
-      icon: <BookOpen className="w-6 h-6 text-green-500" />,
+      icon: <BookOpen className={styles.icon_green} />,
       color: "green",
-      logo: "/images/fcpc.png" // Add your logo path here
+      logo: "/images/fcpc.png",
+      colorClass: styles.green_accent,
+      dotClass: styles.dot_green
     },
     {
       period: "2021 - 2023",
       title: "General Academic Strand (GAS)",
       institution: "Sapang Palay National High School",
       description: "Completed secondary education with focus on academic excellence",
-      icon: <School className="w-6 h-6 text-purple-500" />,
+      icon: <School className={styles.icon_purple} />,
       color: "purple",
-      logo: "/images/spnhs.png" // Add your logo path here
+      logo: "/images/spnhs.png",
+      colorClass: styles.purple_accent,
+      dotClass: styles.dot_purple
     }
   ]
 
   return (
-    <section id="education" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-center">Educational Background</h2>
-          <AuroraText className="text-gray-600 max-w-2xl mx-auto">
+    <section id="education" className={styles.section}>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>Educational Background</h2>
+          <AuroraText 
+            className={styles.subtitle}
+            colors={[
+              "#4B5563", // Gray
+              "#6B7280", // Light gray
+              "#3B82F6", // Blue
+              "#10B981", // Green
+              "#8B5CF6", // Purple
+              "#6366F1"  // Indigo
+            ]}
+            speed={0.8}
+          >
             My academic journey that has shaped my knowledge and skills
           </AuroraText>
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
+        <div className={styles.timeline_container}>
           {/* Timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-200"></div>
+          <div className={styles.timeline_line}></div>
           
-          <div className="space-y-16">
+          <div className={styles.timeline_items}>
             {educationData.map((item, index) => (
-              <div key={index} className="relative">
+              <div key={index} className={styles.timeline_item}>
                 {/* Timeline dot */}
-                <div className={`absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-${item.color}-500 z-10`}></div>
+                <div className={`${styles.timeline_dot} ${item.dotClass}`}></div>
                 
                 {/* Date marker */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 -mt-10 bg-white px-4 py-1 rounded-full border border-gray-200 font-medium text-sm">
+                <div className={styles.date_marker}>
                   {item.period}
                 </div>
                 
-                {/* Card - alternating sides but closer to the line */}
-                <div className={`flex ${index % 2 === 0 ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`w-[48%] ${index % 2 === 0 ? 'mr-4' : 'ml-4'}`}>
+                {/* Card - alternating sides */}
+                <div className={index % 2 === 0 ? styles.card_right : styles.card_left}>
+                  <div className={styles.card_wrapper}>
                     <CustomCard
                       title={item.title}
                       description={item.institution}
-                      className={`w-full transform transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,0,0,0.1)] hover:border-${item.color}-500/50`}
+                      className={`${styles.education_card} ${item.colorClass}`}
                     >
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                          <div className={`p-2 bg-${item.color}-500/10 rounded-lg`}>
+                      <div className={styles.card_header}>
+                        <div className={styles.icon_wrapper}>
+                          <div className={`${styles.icon_container} ${styles[`icon_bg_${item.color}`]}`}>
                             {item.icon}
                           </div>
                         </div>
                         
                         {/* Institution Logo */}
-                        <div className="relative h-12 w-12 overflow-hidden rounded-md">
+                        <div className={styles.logo_container}>
                           <Image 
                             src={item.logo}
                             alt={`${item.institution} logo`}
                             fill
-                            className="object-contain"
+                            className={styles.logo_image}
                           />
                         </div>
                       </div>
                       
-                      <p className={`text-gray-600 pl-3 border-l-2 border-${item.color}-500/20`}>
+                      <p className={`${styles.description} ${styles[`border_${item.color}`]}`}>
                         {item.description}
                       </p>
                     </CustomCard>

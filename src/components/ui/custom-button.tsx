@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { VariantProps } from "class-variance-authority"
 import { buttonVariants } from "@/components/ui/button"
-import styles from "@/styles/custom-button-9d8f7e6c-b5a4-4c3e-a2b1-8e00db729481.module.css"
+import styles from "@/styles/__custom-button-9d8f7e6c-b5a4-4c3e-a2b1-8e00db729481.module.css"
 
 // Create a proper interface that extends the button's props
 interface CustomButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>,

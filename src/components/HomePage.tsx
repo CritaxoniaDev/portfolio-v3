@@ -10,7 +10,7 @@ import { AuroraText } from "@/components/magicui/aurora-text";
 import { FollowerPointerCard } from "@/components/ui/following-pointer";
 import { Cover } from "@/components/ui/cover";
 import { LineShadowText } from "@/components/magicui/line-shadow-text";
-import styles from "@/styles/homepage-5c24b325-f738-4821-8364-8e00db729481.module.css";
+import styles from "@/styles/__homepage-5c24b325-f738-4821-8364-8e00db729481.module.css";
 
 export default function HomePage() {
     return (
