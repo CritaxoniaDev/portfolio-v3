@@ -1,3 +1,137 @@
+.background_wrapper {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.8),
+      rgba(240, 240, 255, 0.8));
+}
+
+/* Square border around the container */
+.square_border {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Update the corner decoration styles */
+/* Update the corner decoration styles for black shaded SVGs */
+.corner_decoration_top_left,
+.corner_decoration_top_right,
+.corner_decoration_bottom_left,
+.corner_decoration_bottom_right {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  /* Change from color to fill and stroke properties */
+  fill: rgba(0, 0, 0, 0.8);
+  stroke: rgba(0, 0, 0, 1);
+  transition: all 0.3s ease;
+}
+
+.corner_decoration_top_left {
+  top: -10px;
+  left: -10px;
+}
+
+.corner_decoration_top_right {
+  top: -10px;
+  right: -10px;
+}
+
+.corner_decoration_bottom_left {
+  bottom: -10px;
+  left: -10px;
+}
+
+.corner_decoration_bottom_right {
+  bottom: -10px;
+  right: -10px;
+}
+
+/* Add hover effects for the corner decorations */
+.square_border:hover .corner_decoration_top_left,
+.square_border:hover .corner_decoration_top_right,
+.square_border:hover .corner_decoration_bottom_left,
+.square_border:hover .corner_decoration_bottom_right {
+  /* Change from color to fill and stroke properties */
+  fill: rgba(0, 0, 0, 0.9);
+  stroke: rgba(0, 0, 0, 1);
+  filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.3));
+}
+
+/* Add subtle animation for the corner decorations */
+@keyframes pulse-subtle {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.corner_decoration_top_left svg,
+.corner_decoration_top_right svg,
+.corner_decoration_bottom_left svg,
+.corner_decoration_bottom_right svg {
+  animation: pulse-subtle 4s infinite ease-in-out;
+}
+
+.corner_decoration_top_right svg {
+  animation-delay: 1s;
+}
+
+.corner_decoration_bottom_left svg {
+  animation-delay: 2s;
+}
+
+.corner_decoration_bottom_right svg {
+  animation-delay: 3s;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .square_border {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .corner_decoration_top_left,
+  .corner_decoration_top_right,
+  .corner_decoration_bottom_left,
+  .corner_decoration_bottom_right {
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  .square_border:hover .corner_decoration_top_left,
+  .square_border:hover .corner_decoration_top_right,
+  .square_border:hover .corner_decoration_bottom_left,
+  .square_border:hover .corner_decoration_bottom_right {
+    color: rgba(139, 92, 246, 0.7);
+    /* Brighter purple for dark mode */
+  }
+}
+
+/* Static pointer styles */
+.static_pointer {
+  position: absolute;
+  z-index: 50;
+  height: 4rem;
+  width: 4rem;
+  pointer-events: none;
+}
+
+/* Container wrapper adjustments */
 .container_wrapper {
   grid-template-rows: 20px 1fr 20px;
   display: grid;
@@ -8,6 +142,8 @@
   padding-bottom: 5rem;
   padding-top: 3rem;
   font-family: var(--font-geist-sans);
+  position: relative;
+  z-index: 1;
 }
 
 .hero_title_shadow {
@@ -148,6 +284,42 @@
   color: black;
 }
 
+.geist_mono_text {
+  font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  letter-spacing: -0.05em;
+  font-feature-settings: "ss01" on, "ss02" on, "ss03" on, "ss04" on, "ss05" on, "calt" off;
+  font-variant-ligatures: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-weight: 600;
+  /* Slightly bolder for better visibility */
+  position: relative;
+  padding: 0 0.1em;
+  /* Slight padding for the aurora effect */
+  border-radius: 2px;
+  font-size: 0.95em;
+  /* Slightly smaller than surrounding text */
+}
+
+/* Optional: Add a subtle background to enhance the monospace tech feel */
+.geist_mono_text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 2px;
+  z-index: -1;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .geist_mono_text::before {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+}
+
 /* Cards Grid - Enhanced */
 .cards_grid {
   display: grid;
@@ -157,49 +329,32 @@
   perspective: 1000px;
 }
 
-.card_height {
+.card_wrapper {
+  position: relative;
   height: 320px;
   transform-style: preserve-3d;
-  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
   will-change: transform;
-  position: relative;
-}
-
-.card_height:hover {
-  transform: translateY(-8px);
-}
-
-.card_height::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(135deg,
-      rgba(0, 0, 0, 0.1) 0%,
-      rgba(0, 0, 0, 0.05) 100%);
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  border-radius: 4px;
-  filter: blur(15px);
-  transform: translateY(10px) scale(0.95);
-}
-
-.card_height:hover::after {
-  opacity: 1;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .card_content {
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
+  padding: 1.5rem;
+}
+
+.card_wrapper:hover .card_content {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(139, 92, 246, 0.3);
+  transform: translateZ(10px);
 }
 
 .card_content::before {
@@ -208,17 +363,17 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 4px;
+  height: 3px;
   background: linear-gradient(90deg,
       #8B5CF6 0%,
       #4338CA 50%,
       #3B82F6 100%);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.card_height:hover .card_content::before {
+.card_wrapper:hover .card_content::before {
   transform: scaleX(1);
 }
 
@@ -226,70 +381,135 @@
   margin-bottom: 1rem;
   line-height: 1.6;
   font-size: 0.95rem;
-  color: rgba(0, 0, 0, 0.75);
+  color: rgba(0, 0, 0, 0.65);
   transition: color 0.3s ease;
 }
 
-.card_height:hover .card_paragraph {
-  color: rgba(0, 0, 0, 0.9);
-}
-
-/* Add subtle animation for card corners */
-.card_height:hover :global(.absolute.h-6.w-6) {
-  animation: pulse 2s infinite;
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+.card_wrapper:hover .card_paragraph {
+  color: rgba(0, 0, 0, 0.85);
 }
 
 .card_icon_container {
   display: flex;
   justify-content: center;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   position: relative;
 }
 
 .card_icon {
-  width: 3rem;
-  height: 3rem;
-  color: #8B5CF6; /* Purple color */
-  transition: all 0.5s ease;
-  filter: drop-shadow(0 0 2px rgba(139, 92, 246, 0.3));
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #8B5CF6;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  filter: drop-shadow(0 0 2px rgba(139, 92, 246, 0.2));
 }
 
-.card_height:hover .card_icon {
-  transform: scale(1.1) rotate(5deg);
-  color: #7C3AED; /* Darker purple on hover */
-  filter: drop-shadow(0 0 4px rgba(139, 92, 246, 0.5));
+.card_wrapper:hover .card_icon {
+  transform: scale(1.15) rotate(5deg);
+  color: #7C3AED;
+  filter: drop-shadow(0 0 4px rgba(139, 92, 246, 0.4));
 }
 
-/* Add a decorative circle behind the icon */
 .card_icon_container::after {
   content: '';
   position: absolute;
-  width: 4.5rem;
-  height: 4.5rem;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(124, 58, 237, 0.05) 100%);
+  width: 4rem;
+  height: 4rem;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(124, 58, 237, 0.04) 100%);
   border-radius: 50%;
   z-index: -1;
   opacity: 0.7;
-  transition: all 0.5s ease;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.card_height:hover .card_icon_container::after {
-  transform: scale(1.2);
+.card_wrapper:hover .card_icon_container::after {
+  transform: scale(1.3);
   opacity: 1;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(124, 58, 237, 0.08) 100%);
+}
+
+/* Add a shine effect */
+.card_shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent);
+  transform: skewX(-15deg);
+  pointer-events: none;
+}
+
+/* Media queries for responsive design */
+@media (min-width: 768px) {
+  .cards_grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Staggered animation for desktop */
+  .cards_grid:hover .card_wrapper:not(:hover) {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards_grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .card_content {
+    background-color: rgba(30, 30, 30, 0.7);
+    border-color: rgba(50, 50, 50, 0.5);
+  }
+
+  .card_wrapper:hover .card_content {
+    background-color: rgba(30, 30, 30, 0.9);
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+
+  .card_paragraph {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .card_wrapper:hover .card_paragraph {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .card_icon {
+    color: #A78BFA;
+  }
+
+  .card_wrapper:hover .card_icon {
+    color: #C4B5FD;
+  }
+
+  .card_shine {
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent);
+  }
 }
 
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .card_icon {
-    color: #A78BFA; /* Lighter purple for dark mode */
+    color: #A78BFA;
+    /* Lighter purple for dark mode */
   }
-  
+
   .card_height:hover .card_icon {
-    color: #C4B5FD; /* Even lighter purple on hover for dark mode */
+    color: #C4B5FD;
+    /* Even lighter purple on hover for dark mode */
   }
-  
+
   .card_icon_container::after {
     background: linear-gradient(135deg, rgba(167, 139, 250, 0.15) 0%, rgba(196, 181, 253, 0.1) 100%);
   }
@@ -368,10 +588,12 @@
 }
 
 @media (min-width: 768px) {
-  .hero_title, .hero_title_text {
+
+  .hero_title,
+  .hero_title_text {
     font-size: 3.75rem;
   }
-  
+
   .hero_name_top {
     margin-bottom: 0.75rem;
   }
