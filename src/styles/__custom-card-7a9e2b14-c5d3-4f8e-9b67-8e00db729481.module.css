@@ -66,19 +66,6 @@
     margin-top: 0.25rem;
   }
   
-  /* Dark mode styles */
-  @media (prefers-color-scheme: dark) {
-    .card_container {
-      border-color: rgba(255, 255, 255, 0.2);
-    }
-    
-    .corner_icon_top_left,
-    .corner_icon_bottom_left,
-    .corner_icon_top_right,
-    .corner_icon_bottom_right {
-      color: white;
-    }
-  }
   
   /* Add this to your existing CSS module */
 .corner_icon {
@@ -151,16 +138,4 @@
   }
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .corner_icon_top_left,
-  .corner_icon_bottom_left,
-  .corner_icon_top_right,
-  .corner_icon_bottom_right {
-    color: white;
-  }
-  
-  .card_container:hover .corner_icon {
-    color: #A78BFA; /* Lighter purple for dark mode */
-  }
-}
+/* Dark mode support *

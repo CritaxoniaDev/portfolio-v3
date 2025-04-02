@@ -293,70 +293,6 @@
 }
 
 /* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .section {
-    background-color: #1F2937;
-  }
-  
-  .title {
-    color: white;
-  }
-  
-  .subtitle {
-    color: #D1D5DB;
-  }
-  
-  .unified_card {
-    background-color: rgba(31, 41, 55, 0.8);
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  .bio_text {
-    background: rgba(31, 41, 55, 0.5);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    border-image: linear-gradient(
-      to bottom,
-      rgba(59, 130, 246, 0.8),
-      rgba(16, 185, 129, 0.8),
-      rgba(139, 92, 246, 0.8)
-    ) 1;
-  }
-  
-  .bio_text p {
-    color: #D1D5DB;
-  }
-  
-  .bio_text::before,
-  .bio_text::after {
-    color: rgba(139, 92, 246, 0.3);
-  }
-  
-  .divider_line {
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgba(139, 92, 246, 0.4),
-      transparent
-    );
-  }
-  
-  .glow_effect {
-    background: radial-gradient(
-      circle at center,
-      rgba(139, 92, 246, 0.25) 0%,
-      rgba(59, 130, 246, 0.2) 50%,
-      transparent 70%
-    );
-  }
-  
-  .me_svg {
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2)) brightness(0.95);
-  }
-  
-  .me_svg:hover {
-    filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.25)) brightness(1);
-  }
-}
 
 /* Add these new styles to your existing CSS file */
 
@@ -538,28 +474,3 @@
 }
 
 /* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .skill_icon {
-    background: rgba(31, 41, 55, 0.9);
-  }
-  
-  .skill_icon_inner {
-    color: #D1D5DB;
-  }
-  
-  .frontend {
-    border-color: rgba(59, 130, 246, 0.7);
-  }
-  
-  .backend {
-    border-color: rgba(139, 92, 246, 0.7);
-  }
-  
-  .database {
-    border-color: rgba(16, 185, 129, 0.7);
-  }
-  
-  .devops {
-    border-color: rgba(239, 68, 68, 0.7);
-  }
-}

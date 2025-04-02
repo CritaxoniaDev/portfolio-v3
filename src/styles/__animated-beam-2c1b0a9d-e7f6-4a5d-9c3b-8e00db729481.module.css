@@ -56,10 +56,3 @@
     }
   }
   
-  /* Dark mode support */
-  @media (prefers-color-scheme: dark) {
-    .path_base {
-      stroke-opacity: 0.3;
-    }
-  }
-  
