@@ -72,6 +72,139 @@
   position: relative;
 }
 
+/* Safari Browser Styling */
+.safari_browser_container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: white;
+  transform: perspective(1000px) rotateX(2deg);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.safari_browser_container:hover {
+  transform: perspective(1000px) rotateX(0deg) translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.safari_chrome {
+  background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #d0d0d0;
+  height: 40px;
+}
+
+.safari_controls {
+  display: flex;
+  gap: 8px;
+  margin-right: 15px;
+}
+
+.safari_button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.safari_address_bar {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #333;
+  height: 28px;
+  border: 1px solid #d0d0d0;
+}
+
+.safari_icon {
+  margin-right: 8px;
+}
+
+.safari_url {
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+}
+
+.safari_tabs {
+  margin-left: 15px;
+}
+
+.safari_content {
+  padding: 30px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 200px;
+  position: relative;
+}
+
+/* Add a subtle pattern overlay */
+.safari_content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Update bio text styling */
+.bio_text {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 25px;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.bio_text p {
+  color: #333;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  margin: 0;
+  text-align: justify;
+}
+
+/* Add responsive adjustments */
+@media (max-width: 768px) {
+  .safari_browser_container {
+    transform: none;
+    border-radius: 8px;
+  }
+  
+  .safari_chrome {
+    padding: 8px 12px;
+    height: 36px;
+  }
+  
+  .safari_button {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .safari_content {
+    padding: 20px;
+  }
+  
+  .bio_text {
+    padding: 20px;
+  }
+}
+
+
 .geist_mono_text {
   font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   letter-spacing: -0.05em;
@@ -98,28 +231,6 @@
   height: 100%;
   border-radius: 2px;
   z-index: -1;
-}
-
-.bio_text::before {
-  content: '"';
-  position: absolute;
-  top: -1.5rem;
-  left: 1rem;
-  font-size: 5rem;
-  color: rgba(139, 92, 246, 0.2);
-  font-family: serif;
-  line-height: 1;
-}
-
-.bio_text::after {
-  content: '"';
-  position: absolute;
-  bottom: -3.5rem;
-  right: 1rem;
-  font-size: 5rem;
-  color: rgba(59, 130, 246, 0.2);
-  font-family: serif;
-  line-height: 1;
 }
 
 .bio_text p {
@@ -291,8 +402,6 @@
     max-width: 80%;
   }
 }
-
-/* Dark mode support */
 
 /* Add these new styles to your existing CSS file */
 

@@ -120,10 +120,37 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className={styles.bio_text}>
-              <p>
-                My name is Gian Raphael Alcantara, I am {timeAlive} old, a dedicated software engineering student at First City Providential College. My mission revolves around mastering programming languages, algorithms, and software development methodologies. Fueled by a relentless passion for technology and innovation, I aspire to become a proficient software engineer capable of tackling complex problems and contributing to groundbreaking projects. My vision extends beyond mere academic excellence; I aim to leverage my skills to create impactful solutions that address real-world challenges, whether it's enhancing user experiences, optimizing system performance, or revolutionizing industries through cutting-edge software solutions.
-              </p>
+            <div className={styles.safari_browser_container}>
+              {/* Safari Browser Chrome */}
+              <div className={styles.safari_chrome}>
+                <div className={styles.safari_controls}>
+                  <span className={styles.safari_button} style={{ backgroundColor: "#FF5F56" }}></span>
+                  <span className={styles.safari_button} style={{ backgroundColor: "#FFBD2E" }}></span>
+                  <span className={styles.safari_button} style={{ backgroundColor: "#27C93F" }}></span>
+                </div>
+                <div className={styles.safari_address_bar}>
+                  <svg className={styles.safari_icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+                    <circle cx="12" cy="12" r="10" fill="#0066CC" />
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="#FFFFFF" />
+                    <path d="M12 12L8 8M12 12L16 16M12 12L16 8M12 12L8 16" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                  <span className={styles.safari_url}>about.gianraphaelalcantara.dev</span>
+                </div>
+                <div className={styles.safari_tabs}>
+                  <svg className={styles.safari_tab_icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="#999999" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Content Area */}
+              <div className={styles.safari_content}>
+                <div className={styles.bio_text}>
+                  <p>
+                    My name is Gian Raphael Alcantara, I am {timeAlive} old, a dedicated software engineering student at First City Providential College. My mission revolves around mastering programming languages, algorithms, and software development methodologies. Fueled by a relentless passion for technology and innovation, I aspire to become a proficient software engineer capable of tackling complex problems and contributing to groundbreaking projects. My vision extends beyond mere academic excellence; I aim to leverage my skills to create impactful solutions that address real-world challenges, whether it's enhancing user experiences, optimizing system performance, or revolutionizing industries through cutting-edge software solutions.
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
 
