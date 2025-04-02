@@ -33,4 +33,15 @@
         radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.03) 2%, transparent 0%);
     }
   }
+
+  .no-bottom-margin {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  /* Also ensure the last section doesn't have extra margin */
+  .page_container > div:last-child {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
   
