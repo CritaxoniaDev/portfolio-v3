@@ -18,6 +18,35 @@
     background-color: transparent;
     border-color: transparent;
   }
+
+  .geist_mono_text {
+    font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    letter-spacing: -0.05em;
+    font-feature-settings: "ss01" on, "ss02" on, "ss03" on, "ss04" on, "ss05" on, "calt" off;
+    font-variant-ligatures: none;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-weight: 600;
+    /* Slightly bolder for better visibility */
+    position: relative;
+    padding: 0 0.1em;
+    /* Slight padding for the aurora effect */
+    border-radius: 2px;
+    font-size: 0.95em;
+    /* Slightly smaller than surrounding text */
+  }
+  
+  /* Optional: Add a subtle background to enhance the monospace tech feel */
+  .geist_mono_text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    z-index: -1;
+  }
   
   .header_inner {
     max-width: 72rem;

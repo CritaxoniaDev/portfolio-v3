@@ -5,7 +5,7 @@ import { CustomCard } from "@/components/ui/custom-card"
 import Image from "next/image"
 import { FaLaravel, FaPhp } from "react-icons/fa"
 import { SiMysql, SiOpenai } from "react-icons/si"
-import { Briefcase } from "lucide-react"
+import { Briefcase, Calendar, Building } from "lucide-react"
 import { AuroraText } from "@/components/magicui/aurora-text"
 import styles from "@/styles/__experience-9d8f7e6c-b5a4-4c3e-a2b1-8e00db729481.module.css"
 
@@ -25,7 +25,7 @@ const Experience = () => {
         { name: "Laravel", icon: FaLaravel },
         { name: "PHP", icon: FaPhp },
         { name: "MySQL", icon: SiMysql },
-        { name: "OpenAi API", icon: SiOpenai }
+        { name: "OpenAI API", icon: SiOpenai }
       ]
     }
     // You can add more experience items here
@@ -35,10 +35,17 @@ const Experience = () => {
     <section id="experience" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Work Experience</h2>
+          <h2 className={`${styles.title} ${styles.geist_mono_text}`}>Work Experience</h2>
           <AuroraText
             speed={1.2}
             className={styles.subtitle_aurora}
+            colors={[
+              "#4B5563", // Gray
+              "#6B7280", // Light gray
+              "#6366F1", // Indigo
+              "#8B5CF6", // Purple
+              "#3B82F6"  // Blue
+            ]}
           >
             My professional journey and the skills I've developed along the way
           </AuroraText>
@@ -48,22 +55,25 @@ const Experience = () => {
           {experienceData.map((item, index) => (
             <div key={index} className={styles.timeline_item}>
               <div className={styles.timeline_line}></div>
-              
+
               <div className={styles.card_container}>
                 {/* Timeline dot */}
                 <div className={styles.timeline_dot}></div>
-                
+
                 <CustomCard
                   title={item.title}
                   description={item.company}
                   className={styles.experience_card}
                 >
                   <div className={styles.card_header}>
-                    <span className={styles.period}>{item.period}</span>
-                    
+                    <div className="flex items-center gap-2">
+                      <Calendar size={14} className="text-indigo-400" />
+                      <span className={styles.period}>{item.period}</span>
+                    </div>
+
                     {/* Company Logo */}
                     <div className={styles.logo_container}>
-                      <Image 
+                      <Image
                         src={item.logo}
                         alt={`${item.company} logo`}
                         fill
@@ -71,7 +81,7 @@ const Experience = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <ul className={styles.description_list}>
                     {item.description.map((desc, i) => (
                       <li key={i} className={styles.description_item}>
@@ -80,7 +90,7 @@ const Experience = () => {
                       </li>
                     ))}
                   </ul>
-                  
+
                   <div className={styles.skills_section}>
                     <p className={styles.skills_title}>Skills & Technologies</p>
                     <div className={styles.skills_container}>
@@ -103,3 +113,4 @@ const Experience = () => {
 }
 
 export default Experience
+

@@ -48,7 +48,7 @@ const Education = () => {
     <section id="education" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Educational Background</h2>
+          <h2 className={`${styles.title} ${styles.geist_mono_text}`}>Educational Background</h2>
           <AuroraText 
             className={styles.subtitle}
             colors={[

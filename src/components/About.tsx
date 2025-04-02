@@ -42,45 +42,53 @@ const About = () => {
       fromRef: meRef,
       toRef: frontendRef,
       pathColor: "#e2e8f0",
-      pathWidth: 1.5,
+      pathWidth: 2.5, // Increased from 1.5
       gradientStartColor: "#3b82f6",
       gradientStopColor: "#10b981",
       duration: 4,
       curvature: 50,
-      reverse: false
+      reverse: false,
+      glowIntensity: 0.8, // Added glow intensity
+      glowColor: "rgba(59, 130, 246, 0.6)" // Added glow color
     },
     {
       fromRef: meRef,
       toRef: backendRef,
       pathColor: "#e2e8f0",
-      pathWidth: 1.5,
+      pathWidth: 2.5, // Increased from 1.5
       gradientStartColor: "#8b5cf6",
       gradientStopColor: "#3b82f6",
       duration: 4,
       curvature: -50,
-      reverse: false
+      reverse: false,
+      glowIntensity: 0.8,
+      glowColor: "rgba(139, 92, 246, 0.6)"
     },
     {
       fromRef: meRef,
       toRef: databaseRef,
       pathColor: "#e2e8f0",
-      pathWidth: 1.5,
+      pathWidth: 2.5, // Increased from 1.5
       gradientStartColor: "#10b981",
       gradientStopColor: "#8b5cf6",
       duration: 4,
       curvature: 70,
-      reverse: false
+      reverse: false,
+      glowIntensity: 0.8,
+      glowColor: "rgba(16, 185, 129, 0.6)"
     },
     {
       fromRef: meRef,
       toRef: devopsRef,
       pathColor: "#e2e8f0",
-      pathWidth: 1.5,
+      pathWidth: 2.5, // Increased from 1.5
       gradientStartColor: "#ef4444",
       gradientStopColor: "#f59e0b",
       duration: 4,
       curvature: -70,
-      reverse: false
+      reverse: false,
+      glowIntensity: 0.8,
+      glowColor: "rgba(239, 68, 68, 0.6)"
     }
   ]
 
@@ -88,7 +96,7 @@ const About = () => {
     <section id="about" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>About Me</h2>
+          <h2 className={`${styles.title} ${styles.geist_mono_text}`}>About Me</h2>
           <AuroraText
             className={styles.subtitle}
             colors={[
@@ -99,7 +107,7 @@ const About = () => {
               "#8B5CF6", // Purple
               "#6366F1"  // Indigo
             ]}
-            speed={0.8}
+            speed={1.2}
           >
             Passionate software engineering student with a vision for innovation
           </AuroraText>

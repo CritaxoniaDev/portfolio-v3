@@ -1,15 +1,22 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link";
-import { FollowerPointerCard } from "@/components/ui/following-pointer";
 import { CustomButton } from "@/components/ui/custom-button";
 import { cn } from "@/lib/utils"
 import styles from "@/styles/__header-5c24b325-f738-4821-8364-8e00db729481.module.css"
+import { motion, useMotionValue } from "motion/react";
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false)
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const [activeTooltip, setActiveTooltip] = useState("")
+    const navRef = useRef<HTMLElement>(null)
+    
+    // Mouse tracking for custom pointer
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+    const [isHovering, setIsHovering] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -19,6 +26,26 @@ export default function Header() {
         window.addEventListener("scroll", handleScroll)
         return () => window.removeEventListener("scroll", handleScroll)
     }, [])
+
+    // Handle mouse movement for custom pointer
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (navRef.current) {
+            const rect = navRef.current.getBoundingClientRect();
+            x.set(e.clientX - rect.left);
+            y.set(e.clientY - rect.top);
+        }
+    };
+
+    // Colors for the tooltip
+    const colors = [
+        "#0ea5e9",
+        "#737373",
+        "#14b8a6",
+        "#22c55e",
+        "#3b82f6",
+        "#ef4444",
+        "#eab308",
+    ];
 
     return (
         <header
@@ -32,7 +59,7 @@ export default function Header() {
             <div className={styles.header_inner}>
                 {/* Logo with reduced padding */}
                 <div className={styles.logo_container}>
-                    <Link href="/" className={styles.logo_link}>
+                    <Link href="#" className={styles.logo_link}>
                         <div className={styles.logo_svg_container}>
                             <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" className={styles.logo_svg}>
                                 {/* Background gradient */}
@@ -70,60 +97,94 @@ export default function Header() {
                     </Link>
                 </div>
 
-                {/* Desktop Navigation - Centered */}
-                <nav className={styles.desktop_nav}>
+                {/* Desktop Navigation - Centered with custom tooltip */}
+                <nav 
+                    className={`${styles.desktop_nav} ${styles.geist_mono_text}`}
+                    ref={navRef}
+                    onMouseMove={handleMouseMove}
+                    onMouseEnter={() => setIsHovering(true)}
+                    onMouseLeave={() => setIsHovering(false)}
+                >
+                    {/* Custom tooltip (without the pointer SVG) */}
+                    {isHovering && activeTooltip && (
+                        <motion.div
+                            className="absolute z-50 pointer-events-none"
+                            style={{
+                                top: y,
+                                left: x,
+                                transform: 'translate(-50%, -100%)',
+                                marginTop: '-10px'
+                            }}
+                            initial={{ scale: 0, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0, opacity: 0 }}
+                        >
+                            <motion.div
+                                style={{
+                                    backgroundColor: colors[Math.floor(Math.random() * colors.length)],
+                                }}
+                                initial={{ scale: 0.5, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                exit={{ scale: 0.5, opacity: 0 }}
+                                className="min-w-max rounded-full bg-neutral-200 px-2 py-1 text-xs whitespace-nowrap text-white"
+                            >
+                                {activeTooltip}
+                            </motion.div>
+                        </motion.div>
+                    )}
+
                     <Link
-                        href="/about"
+                        href="#about"
                         className={styles.nav_link}
+                        onMouseEnter={() => setActiveTooltip("About Me")}
+                        onMouseLeave={() => setActiveTooltip("")}
                     >
-                        <FollowerPointerCard title="About Me" className={styles.nav_pointer}>
-                            About
-                        </FollowerPointerCard>
+                        About
                     </Link>
 
                     <Link
-                        href="/experience"
+                        href="#experience"
                         className={styles.nav_link}
+                        onMouseEnter={() => setActiveTooltip("My Experience")}
+                        onMouseLeave={() => setActiveTooltip("")}
                     >
-                        <FollowerPointerCard title="My Experience" className={styles.nav_pointer}>
-                            Experience
-                        </FollowerPointerCard>
+                        Experience
                     </Link>
 
                     <Link
-                        href="/education"
+                        href="#education"
                         className={styles.nav_link}
+                        onMouseEnter={() => setActiveTooltip("My Education")}
+                        onMouseLeave={() => setActiveTooltip("")}
                     >
-                        <FollowerPointerCard title="My Education" className={styles.nav_pointer}>
-                            Education
-                        </FollowerPointerCard>
+                        Education
                     </Link>
 
                     <Link
-                        href="/skills"
+                        href="#skills"
                         className={styles.nav_link}
+                        onMouseEnter={() => setActiveTooltip("My Skills")}
+                        onMouseLeave={() => setActiveTooltip("")}
                     >
-                        <FollowerPointerCard title="My Skills" className={styles.nav_pointer}>
-                            Skills
-                        </FollowerPointerCard>
+                        Skills
                     </Link>
 
                     <Link
-                        href="/projects"
+                        href="#projects"
                         className={styles.nav_link}
+                        onMouseEnter={() => setActiveTooltip("My Projects")}
+                        onMouseLeave={() => setActiveTooltip("")}
                     >
-                        <FollowerPointerCard title="My Projects" className={styles.nav_pointer}>
-                            Projects
-                        </FollowerPointerCard>
+                        Projects
                     </Link>
 
                     <Link
-                        href="/contact"
+                        href="#contact"
                         className={styles.nav_link}
+                        onMouseEnter={() => setActiveTooltip("Contact Me")}
+                        onMouseLeave={() => setActiveTooltip("")}
                     >
-                        <FollowerPointerCard title="Contact Me" className={styles.nav_pointer}>
-                            Contact
-                        </FollowerPointerCard>
+                        Contact
                     </Link>
                 </nav>
 
@@ -160,21 +221,42 @@ export default function Header() {
             <div className={`${styles.mobile_menu} ${mobileMenuOpen ? styles.mobile_menu_visible : styles.mobile_menu_hidden}`}>
                 <div className={styles.mobile_menu_inner}>
                     <Link
-                        href="/projects"
-                        className={styles.mobile_menu_link}
-                        onClick={() => setMobileMenuOpen(false)}
-                    >
-                        Projects
-                    </Link>
-                    <Link
-                        href="/about"
+                        href="#about"
                         className={styles.mobile_menu_link}
                         onClick={() => setMobileMenuOpen(false)}
                     >
                         About
                     </Link>
                     <Link
-                        href="/contact"
+                        href="#experience"
+                        className={styles.mobile_menu_link}
+                        onClick={() => setMobileMenuOpen(false)}
+                    >
+                        Experience
+                    </Link>
+                    <Link
+                        href="#education"
+                        className={styles.mobile_menu_link}
+                        onClick={() => setMobileMenuOpen(false)}
+                    >
+                        Education
+                    </Link>
+                    <Link
+                        href="#skills"
+                        className={styles.mobile_menu_link}
+                        onClick={() => setMobileMenuOpen(false)}
+                    >
+                        Skills
+                    </Link>
+                    <Link
+                        href="#projects"
+                        className={styles.mobile_menu_link}
+                        onClick={() => setMobileMenuOpen(false)}
+                    >
+                        Projects
+                    </Link>
+                    <Link
+                        href="#contact"
                         className={styles.mobile_menu_link}
                         onClick={() => setMobileMenuOpen(false)}
                     >
