@@ -1,0 +1,70 @@
+.corner_icon {
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 1px currentColor);
+  }
+  
+  .card_container:hover .corner_icon {
+    transform: rotate(45deg);
+    color: #8B5CF6; /* Purple color on hover */
+  }
+  
+  /* Enhanced corner icon positions with animations */
+  .corner_icon_top_left {
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    top: -0.75rem;
+    left: -0.75rem;
+    color: black;
+    animation: pulse 3s infinite;
+    animation-delay: 0s;
+  }
+  
+  .corner_icon_bottom_left {
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    bottom: -0.75rem;
+    left: -0.75rem;
+    color: black;
+    animation: pulse 3s infinite;
+    animation-delay: 0.75s;
+  }
+  
+  .corner_icon_top_right {
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    top: -0.75rem;
+    right: -0.75rem;
+    color: black;
+    animation: pulse 3s infinite;
+    animation-delay: 1.5s;
+  }
+  
+  .corner_icon_bottom_right {
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    bottom: -0.75rem;
+    right: -0.75rem;
+    color: black;
+    animation: pulse 3s infinite;
+    animation-delay: 2.25s;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
